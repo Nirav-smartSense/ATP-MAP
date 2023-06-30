@@ -1,0 +1,93 @@
+.container{
+  text-align: center;
+}
+
+.mapBox{
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.left-container{
+  width: 300px;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  z-index: 9999;
+  background: #fff;
+  height: calc(100vh - 180px);
+  padding: 20px;
+}
+
+.left-container ul{
+  padding: 0;
+  margin: 0;
+}
+
+.left-container ul li{
+  list-style-type: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.left-container ul li a{
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  padding: 10px;
+  background-color: #e7e7e7;
+  display: block;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.left-container ul li a:hover, .left-container ul li a.active{
+  background-color: #333;
+  color: #e7e7e7;
+  cursor: pointer;
+}
+
+.right-container{
+  width: 100%;
+}
+
+.leaflet-container{
+  height: calc(100vh - 100px);
+}
+
+.popUpMarker{
+  display: flex;
+  align-items: center;
+  gap:1rem;
+
+}
+.popUpMarker p{
+  font-size: 14px;
+  margin: 0;
+}
+.leaflet-popup-content{
+  margin: 0 10px !important;
+  padding: 15px 0;
+  width: 140px !important;
+}
+
+.leaflet-popup-content p{
+  margin: 0 !important;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:10px;
+}
+
+.header .searchbar{
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #a4a4a4;
+  width: 450px;
+  font-size: 16px;
+  outline: none;
+}
