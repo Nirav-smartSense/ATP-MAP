@@ -43,6 +43,7 @@ function App() {
   const [assets, setAssets] = useState(data.data);
   const [isPolyLine, setIsPolyLine] = useState(false);
 
+  //All data
   const responseData = data.data;
 
   //Default position of Map
@@ -68,17 +69,24 @@ function App() {
 
   //Active toggle class function
   const toggleClass = (e: any) => {
+    //store deviceName
     const deviceResponse = e.target.id;
+
+    //Check If all device not selected
     if (deviceResponse !== "showAll") {
-      debugger;
       setIsShowAll(false);
       setActive(deviceResponse);
       setIsPolyLine(true);
 
+      //looking for device name from list
       let assetName = responseData?.find(
         (id) => id.assetName === deviceResponse
       );
+
+      //set selected device object
       setAsset(assetName);
+
+      //re assign list with new asset
       assetName && setAssets([assetName]);
 
       if (showCurrentLocation) {
@@ -99,9 +107,11 @@ function App() {
     }
   };
 
+  //Function for current location
   const handleCurrentLocation = () => {
     setShowCurrentLocation(!showCurrentLocation);
 
+    //Check show all device
     if (isShowAll) {
       const currentAllLocation = assets.map((data) => {
         return {
@@ -116,6 +126,7 @@ function App() {
         };
       });
 
+      //re assign current location list with selected device
       setAssets(currentAllLocation);
     } else {
       const locations = [
@@ -124,12 +135,15 @@ function App() {
         asset?.locations[0].createDate,
       ];
 
-      const assetLocation = { ...asset, locations };
+      console.log("location", locations);
 
-      // setAsset(assetLocation)
+      const assetLocation = { ...asset, locations };
+      console.log("assetLocation", assetLocation);
+      // setAsset(assetLocation);
     }
   };
 
+  //Function for search bar
   const handleSearchChange = (e: any) => {
     console.log(e.currentTarget.value);
   };
@@ -189,7 +203,6 @@ function App() {
                   onChange={handleCurrentLocation}
                 ></input>
                 <label htmlFor="currentLocation">Show Current</label>
-                {showCurrentLocation ? "Hi" : ""}
               </li>
             </ul>
           </div>
