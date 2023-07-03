@@ -15,19 +15,30 @@
   top: 70px;
   z-index: 9999;
   background: #fff;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 140px);
   padding: 20px;
 }
 
 .left-container ul{
   padding: 0;
   margin: 0;
+  height: calc(100vh - 240px);
+  overflow-y: auto;
+  background: #fff;
+
 }
 
 .left-container ul li{
   list-style-type: none;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+.left-container ul li:last-child{
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  padding: 10px;
 }
 
 .left-container ul li a{

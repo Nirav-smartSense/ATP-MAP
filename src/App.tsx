@@ -39,9 +39,19 @@ function App() {
   const [isActive, setActive] = useState("all");
   const [isShowAll, setIsShowAll] = useState(true);
   const [showCurrentLocation, setShowCurrentLocation] = useState(false);
+  const [currentLocationAsset, setCurrentLocationAsset] =
+    useState<null | AssetLocation>();
   const [asset, setAsset] = useState<null | AssetTypes>();
   const [assets, setAssets] = useState(data.data);
   const [isPolyLine, setIsPolyLine] = useState(false);
+
+  useEffect(() => {
+    console.log("asset2", asset);
+  }, [asset]);
+
+  useEffect(() => {
+    console.log("currentLocationAsset", currentLocationAsset);
+  }, [currentLocationAsset]);
 
   //All data
   const responseData = data.data;
@@ -88,21 +98,14 @@ function App() {
 
       //re assign list with new asset
       assetName && setAssets([assetName]);
-
-      if (showCurrentLocation) {
-        console.log("currentLocation::yes");
-      } else {
-        console.log("currentLocation::no");
-      }
     } else {
-      setAssets(data.data);
-      setIsShowAll(true);
-      setIsPolyLine(false);
-
       if (showCurrentLocation) {
-        console.log("currentLocation::yes");
+        console.log("current yes");
+        setIsShowAll(true);
       } else {
-        console.log("currentLocation::no");
+        setAssets(data.data);
+        setIsShowAll(true);
+        setIsPolyLine(false);
       }
     }
   };
@@ -111,35 +114,39 @@ function App() {
   const handleCurrentLocation = () => {
     setShowCurrentLocation(!showCurrentLocation);
 
-    //Check show all device
-    if (isShowAll) {
-      const currentAllLocation = assets.map((data) => {
-        return {
-          ...data,
-          locations: [
-            {
-              latitude: data.locations[0].latitude,
-              longitude: data.locations[0].longitude,
-              createDate: data.locations[0].createDate,
-            },
-          ],
-        };
-      });
+    if (!showCurrentLocation) {
+      //Check show all device
+      if (isShowAll) {
+        const currentAllLocation = assets.map((data) => {
+          return {
+            ...data,
+            locations: [
+              {
+                latitude: data.locations[0].latitude,
+                longitude: data.locations[0].longitude,
+                createDate: data.locations[0].createDate,
+              },
+            ],
+          };
+        });
 
-      //re assign current location list with selected device
-      setAssets(currentAllLocation);
+        //re assign current location list with selected device
+        setAssets(currentAllLocation);
+      } else {
+        const locations = [
+          {
+            latitude: asset?.locations[0].latitude,
+            longitude: asset?.locations[0].longitude,
+          },
+        ];
+
+        console.log("deviceLoc", locations);
+        const assetLocation = { ...asset, locations };
+        console.log("assetLoction", assetLocation);
+        setAsset(assetLocation);
+      }
     } else {
-      const locations = [
-        asset?.locations[0].latitude,
-        asset?.locations[0].longitude,
-        asset?.locations[0].createDate,
-      ];
-
-      console.log("location", locations);
-
-      const assetLocation = { ...asset, locations };
-      console.log("assetLocation", assetLocation);
-      // setAsset(assetLocation);
+      setAssets(data.data);
     }
   };
 
