@@ -53,16 +53,11 @@ function App() {
     }
   };
 
-  //Location line color
-
-  //custom icons
-
   //Active toggle class function
   const toggleClass = (e: any) => {
     //store deviceName
     const deviceResponse = e.target.id;
 
-    //Check If all device not selected
     setIsShowAll(false);
     setActive(deviceResponse);
 
@@ -147,7 +142,11 @@ function App() {
                   </>
                 );
               })}
+            </ul>
+          </div>
 
+          <div className="header-section">
+            <ul>
               <li>
                 <input
                   type="checkbox"
@@ -156,7 +155,7 @@ function App() {
                   checked={showCurrentLocation}
                   onChange={handleCurrentLocation}
                 ></input>
-                <label htmlFor="currentLocation">Show Current</label>
+                <label htmlFor="currentLocation">Show Last Location</label>
               </li>
 
               <li>
@@ -167,7 +166,7 @@ function App() {
                   checked={isShowAll}
                   onChange={handleShowAllToggle}
                 ></input>
-                <label htmlFor="showAll">Show all</label>
+                <label htmlFor="showAll">Show all assets</label>
               </li>
             </ul>
           </div>

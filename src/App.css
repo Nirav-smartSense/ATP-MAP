@@ -1,14 +1,14 @@
-.container{
+.container {
   text-align: center;
 }
 
-.mapBox{
+.mapBox {
   display: flex;
   gap: 10px;
   position: relative;
 }
 
-.left-container{
+.left-container {
   width: 300px;
   position: absolute;
   left: 0;
@@ -19,29 +19,21 @@
   padding: 20px;
 }
 
-.left-container ul{
+.left-container ul {
   padding: 0;
   margin: 0;
   height: calc(100vh - 240px);
   overflow-y: auto;
   background: #fff;
-
 }
 
-.left-container ul li{
+.left-container ul li {
   list-style-type: none;
   margin-bottom: 10px;
   cursor: pointer;
 }
 
-.left-container ul li:last-child{
-  position: sticky;
-  bottom: 0;
-  background-color: #fff;
-  padding: 10px;
-}
-
-.left-container ul li a{
+.left-container ul li a {
   text-decoration: none;
   font-size: 18px;
   color: #333;
@@ -53,48 +45,50 @@
   text-transform: capitalize;
 }
 
-.left-container ul li a:hover, .left-container ul li a.active{
+.left-container ul li a:hover,
+.left-container ul li a.active {
   background-color: #333;
   color: #e7e7e7;
   cursor: pointer;
 }
 
-.right-container{
+.right-container {
   width: 100%;
 }
 
-.leaflet-container{
+.leaflet-container {
   height: calc(100vh - 100px);
 }
 
-.popUpMarker{
+.popUpMarker {
   display: flex;
   align-items: center;
-  gap:1rem;
-
+  gap: 1rem;
 }
-.popUpMarker p{
-  font-size: 14px;
+.popUpMarker p {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
   margin: 0;
 }
-.leaflet-popup-content{
+.leaflet-popup-content {
   margin: 0 10px !important;
   padding: 15px 0;
   width: 140px !important;
 }
 
-.leaflet-popup-content p{
+.leaflet-popup-content p {
   margin: 0 !important;
 }
 
-.header{
+.header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:10px;
+  gap: 10px;
 }
 
-.header .searchbar{
+.header .searchbar {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #a4a4a4;
@@ -102,3 +96,46 @@
   font-size: 16px;
   outline: none;
 }
+
+.header-section {
+  position: absolute;
+  top: 80px;
+  left: 350px;
+  z-index: 999;
+}
+
+.header-section ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.header-section ul li {
+  list-style-type: none;
+  padding: 8px 15px;
+  background-color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.header-section ul li label {
+  font-size: 18px;
+  line-height: 26px;
+  cursor: pointer;
+}
+
+/* .header-section ul li input {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 100%;
+  top: 0;
+  cursor: pointer;
+  opacity: 0;
+  background: #fff;
+} */
