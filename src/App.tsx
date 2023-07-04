@@ -29,14 +29,10 @@ export type AssetTypes = {
 };
 
 function App() {
-  const [isActive, setActive] = useState("all");
-  const [isShowAll, setIsShowAll] = useState(true);
-  const [showCurrentLocation, setShowCurrentLocation] = useState(false);
   const [currentLocationAsset, setCurrentLocationAsset] = useState<
     null | AssetTypes[]
   >();
   const [asset, setAsset] = useState<null | AssetTypes>();
-  const [showAllAssets, setShowAllAssets] = useState(data.data);
 
   //All data
   const responseData = data.data;
@@ -56,57 +52,32 @@ function App() {
   //Active toggle class function
   const toggleClass = (e: any) => {
     //store deviceName
-    const deviceResponse = e.target.id;
+    const deviceResponse = parseInt(e.target.id);
 
-    setIsShowAll(false);
-    setActive(deviceResponse);
+    if (deviceResponse === asset?.assetId) {
+      setAsset(null);
+    } else {
+      //looking for device name from list
+      let assetName = responseData?.find((id) => id.assetId === deviceResponse);
 
-    //looking for device name from list
-    let assetName = responseData?.find((id) => id.assetName === deviceResponse);
-
-    //set selected device object
-    setAsset(assetName);
-  };
-
-  //Function for current location
-  const handleCurrentLocation = () => {
-    setShowCurrentLocation((prev) => !prev);
+      //set selected device object
+      setAsset(assetName);
+    }
   };
 
   useEffect(() => {
-    if (asset) {
-      setCurrentLocationAsset([
+    const assetsWithCurrentLoactions = responseData.map((asset) => ({
+      ...asset,
+      locations: [
         {
-          ...asset,
-          locations: [
-            {
-              latitude: asset.locations[0].latitude,
-              longitude: asset.locations[0].longitude,
-            },
-          ],
+          latitude: asset.locations[0].latitude,
+          longitude: asset.locations[0].longitude,
         },
-      ]);
-    }
+      ],
+    }));
 
-    if (isShowAll) {
-      const assetsWithCurrentLoactions = showAllAssets.map((asset) => ({
-        ...asset,
-        locations: [
-          {
-            latitude: asset.locations[0].latitude,
-            longitude: asset.locations[0].longitude,
-          },
-        ],
-      }));
-
-      setCurrentLocationAsset([...assetsWithCurrentLoactions]);
-    }
-  }, [isShowAll, showCurrentLocation, asset]);
-
-  const handleShowAllToggle = () => {
-    setIsShowAll((prev) => !prev);
-    setAsset(null);
-  };
+    setCurrentLocationAsset([...assetsWithCurrentLoactions]);
+  }, []);
 
   //Function for search bar
   const handleSearchChange = (e: any) => {
@@ -121,53 +92,23 @@ function App() {
             <h2>Assets</h2>
 
             <ul>
-              {responseData.map((asset, key) => {
+              {responseData.map((ast) => {
                 return (
                   <>
-                    <li key={asset.assetId}>
+                    <li key={ast.assetId}>
                       <a
-                        id={asset.assetName}
+                        id={`${ast.assetId}`}
                         className={
-                          isShowAll
-                            ? "active"
-                            : isActive === asset.assetName
-                            ? "active"
-                            : ""
+                          ast.assetId === asset?.assetId ? "active" : ""
                         }
                         onClick={(e) => toggleClass(e)}
                       >
-                        {asset.assetName}
+                        {ast.assetName}
                       </a>
                     </li>
                   </>
                 );
               })}
-            </ul>
-          </div>
-
-          <div className="header-section">
-            <ul>
-              <li>
-                <input
-                  type="checkbox"
-                  id="currentLocation"
-                  name="currentLocation"
-                  checked={showCurrentLocation}
-                  onChange={handleCurrentLocation}
-                ></input>
-                <label htmlFor="currentLocation">Show Last Location</label>
-              </li>
-
-              <li>
-                <input
-                  type="checkbox"
-                  id="showAll"
-                  name="showAll"
-                  checked={isShowAll}
-                  onChange={handleShowAllToggle}
-                ></input>
-                <label htmlFor="showAll">Show all assets</label>
-              </li>
             </ul>
           </div>
 
@@ -187,7 +128,7 @@ function App() {
             <MapContainer
               attributionControl={false}
               center={defaultLocation()}
-              zoom={7}
+              zoom={2.5}
               scrollWheelZoom={true}
               zoomControl={false}
             >
@@ -206,18 +147,9 @@ function App() {
                 />
               )}
 
-              {isShowAll && !showCurrentLocation && (
-                <RenderLoaction locationData={showAllAssets} />
-              )}
+              {!asset && <RenderLoaction locationData={currentLocationAsset} />}
 
-              {showCurrentLocation && isShowAll && (
-                <RenderLoaction locationData={currentLocationAsset} />
-              )}
-
-              <PolylineWithMarker
-                asset={asset}
-                showCurrent={showCurrentLocation}
-              />
+              <PolylineWithMarker asset={asset} showCurrent={false} />
             </MapContainer>
           </div>
         </div>
