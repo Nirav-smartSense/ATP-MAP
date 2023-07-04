@@ -1,18 +1,11 @@
 import "./App.css";
-import {
-  MapContainer,
-  Marker,
-  Polyline,
-  TileLayer,
-  Tooltip,
-  ZoomControl,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, TileLayer, ZoomControl, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { Icon } from "leaflet";
-import markerIcon from "../public/marker-icon.png";
+
 import { useEffect, useState } from "react";
 import data from "./data.json";
+import RenderLoaction from "./RenderLoaction";
+import PolylineWithMarker from "./PolylineWithMarker";
 
 function SetViewOnClick({ location }: any) {
   const map = useMap();
@@ -26,7 +19,7 @@ type AssetLocation = {
   createDate?: string;
 };
 
-type AssetTypes = {
+export type AssetTypes = {
   assetId: number;
   assetName: string;
   companyName: string;
@@ -39,19 +32,11 @@ function App() {
   const [isActive, setActive] = useState("all");
   const [isShowAll, setIsShowAll] = useState(true);
   const [showCurrentLocation, setShowCurrentLocation] = useState(false);
-  const [currentLocationAsset, setCurrentLocationAsset] =
-    useState<null | AssetLocation>();
+  const [currentLocationAsset, setCurrentLocationAsset] = useState<
+    null | AssetTypes[]
+  >();
   const [asset, setAsset] = useState<null | AssetTypes>();
-  const [assets, setAssets] = useState(data.data);
-  const [isPolyLine, setIsPolyLine] = useState(false);
-
-  useEffect(() => {
-    console.log("asset2", asset);
-  }, [asset]);
-
-  useEffect(() => {
-    console.log("currentLocationAsset", currentLocationAsset);
-  }, [currentLocationAsset]);
+  const [showAllAssets, setShowAllAssets] = useState(data.data);
 
   //All data
   const responseData = data.data;
@@ -69,13 +54,8 @@ function App() {
   };
 
   //Location line color
-  const limeOptions = { color: "black" };
 
   //custom icons
-  const customIcon = new Icon({
-    iconUrl: markerIcon,
-    iconSize: [20, 30],
-  });
 
   //Active toggle class function
   const toggleClass = (e: any) => {
@@ -83,71 +63,54 @@ function App() {
     const deviceResponse = e.target.id;
 
     //Check If all device not selected
-    if (deviceResponse !== "showAll") {
-      setIsShowAll(false);
-      setActive(deviceResponse);
-      setIsPolyLine(true);
+    setIsShowAll(false);
+    setActive(deviceResponse);
 
-      //looking for device name from list
-      let assetName = responseData?.find(
-        (id) => id.assetName === deviceResponse
-      );
+    //looking for device name from list
+    let assetName = responseData?.find((id) => id.assetName === deviceResponse);
 
-      //set selected device object
-      setAsset(assetName);
-
-      //re assign list with new asset
-      assetName && setAssets([assetName]);
-    } else {
-      if (showCurrentLocation) {
-        console.log("current yes");
-        setIsShowAll(true);
-      } else {
-        setAssets(data.data);
-        setIsShowAll(true);
-        setIsPolyLine(false);
-      }
-    }
+    //set selected device object
+    setAsset(assetName);
   };
 
   //Function for current location
   const handleCurrentLocation = () => {
-    setShowCurrentLocation(!showCurrentLocation);
+    setShowCurrentLocation((prev) => !prev);
+  };
 
-    if (!showCurrentLocation) {
-      //Check show all device
-      if (isShowAll) {
-        const currentAllLocation = assets.map((data) => {
-          return {
-            ...data,
-            locations: [
-              {
-                latitude: data.locations[0].latitude,
-                longitude: data.locations[0].longitude,
-                createDate: data.locations[0].createDate,
-              },
-            ],
-          };
-        });
-
-        //re assign current location list with selected device
-        setAssets(currentAllLocation);
-      } else {
-        const locations = [
-          {
-            latitude: asset?.locations[0].latitude,
-            longitude: asset?.locations[0].longitude,
-          },
-        ];
-
-        console.log("deviceLoc", locations);
-        const assetLocation = { ...asset, locations };
-        console.log("assetLoction", assetLocation);
-        setAsset(assetLocation);
-      }
-    } else {
-      setAssets(data.data);
+  useEffect(() => {
+    if (asset) {
+      setCurrentLocationAsset([
+        {
+          ...asset,
+          locations: [
+            {
+              latitude: asset.locations[0].latitude,
+              longitude: asset.locations[0].longitude,
+            },
+          ],
+        },
+      ]);
     }
+
+    if (isShowAll) {
+      const assetsWithCurrentLoactions = showAllAssets.map((asset) => ({
+        ...asset,
+        locations: [
+          {
+            latitude: asset.locations[0].latitude,
+            longitude: asset.locations[0].longitude,
+          },
+        ],
+      }));
+
+      setCurrentLocationAsset([...assetsWithCurrentLoactions]);
+    }
+  }, [isShowAll, showCurrentLocation, asset]);
+
+  const handleShowAllToggle = () => {
+    setIsShowAll((prev) => !prev);
+    setAsset(null);
   };
 
   //Function for search bar
@@ -163,22 +126,6 @@ function App() {
             <h2>Assets</h2>
 
             <ul>
-              <li>
-                <a
-                  id="showAll"
-                  onClick={(e) => toggleClass(e)}
-                  className={
-                    isShowAll
-                      ? "active"
-                      : isActive === "showAll"
-                      ? "active"
-                      : ""
-                  }
-                >
-                  Show All
-                </a>
-              </li>
-
               {responseData.map((asset, key) => {
                 return (
                   <>
@@ -206,10 +153,21 @@ function App() {
                   type="checkbox"
                   id="currentLocation"
                   name="currentLocation"
-                  value="Bike"
+                  checked={showCurrentLocation}
                   onChange={handleCurrentLocation}
                 ></input>
                 <label htmlFor="currentLocation">Show Current</label>
+              </li>
+
+              <li>
+                <input
+                  type="checkbox"
+                  id="showAll"
+                  name="showAll"
+                  checked={isShowAll}
+                  onChange={handleShowAllToggle}
+                ></input>
+                <label htmlFor="showAll">Show all</label>
               </li>
             </ul>
           </div>
@@ -249,39 +207,18 @@ function App() {
                 />
               )}
 
-              {assets.map((asset, key) => {
-                return asset.locations.map((locationData) => {
-                  return (
-                    <>
-                      <Marker
-                        position={[
-                          locationData.latitude,
-                          locationData.longitude,
-                        ]}
-                        icon={customIcon}
-                      >
-                        <Tooltip permanent direction="top">
-                          <div className="popUpMarker">
-                            <img src={markerIcon} height={20} alt="" />
-                            <p>{asset.companyName}</p>
-                          </div>
-                        </Tooltip>
-                      </Marker>
-                    </>
-                  );
-                });
-              })}
-
-              {isPolyLine ? (
-                <Polyline
-                  pathOptions={limeOptions}
-                  positions={asset?.locations.map((data) => {
-                    return [data.latitude, data.longitude];
-                  })}
-                />
-              ) : (
-                ""
+              {isShowAll && !showCurrentLocation && (
+                <RenderLoaction locationData={showAllAssets} />
               )}
+
+              {showCurrentLocation && isShowAll && (
+                <RenderLoaction locationData={currentLocationAsset} />
+              )}
+
+              <PolylineWithMarker
+                asset={asset}
+                showCurrent={showCurrentLocation}
+              />
             </MapContainer>
           </div>
         </div>
