@@ -44,6 +44,7 @@ const PolylineWithMarker = ({
         positions={asset?.locations.map((data) => {
           return [data.latitude, data.longitude];
         })}
+        weight={2}
       />
       {asset.locations.map((locationData) => (
         <Marker

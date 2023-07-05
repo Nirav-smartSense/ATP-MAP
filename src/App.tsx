@@ -1,15 +1,26 @@
 import "./App.css";
-import { MapContainer, TileLayer, ZoomControl, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  ZoomControl,
+  useMap,
+  FeatureGroup,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import data from "./data.json";
 import RenderLoaction from "./RenderLoaction";
 import PolylineWithMarker from "./PolylineWithMarker";
+import { LatLngTuple, map } from "leaflet";
+import MapBound from "./MapBound";
 
-function SetViewOnClick({ location }: any) {
+function SetViewOnClick({ location, bound }: any) {
   const map = useMap();
-  map.flyTo(location, map.getZoom());
+  // map.flyTo(location, map.getZoom());
+  // map.fitBounds(bound, { paddingTopLeft: [340, 50], duration: 10000 });
+  map.flyToBounds(bound, { paddingTopLeft: [340, 50] });
+
   return null;
 }
 
@@ -37,17 +48,16 @@ function App() {
   //All data
   const responseData = data.data;
 
-  //Default position of Map
-  const defaultLocation = () => {
-    if (responseData) {
-      return [
-        responseData[0].locations[0].latitude,
-        responseData[0].locations[0].longitude,
-      ];
-    } else {
-      return [23.28, 72.65];
-    }
-  };
+  const extractBounds = useMemo(() => {
+    return responseData.reduce((prev, nxt) => {
+      const extractedlatLong: LatLngTuple[] = nxt.locations.map((loc) => [
+        loc.latitude,
+        loc.longitude,
+      ]);
+
+      return [...prev, ...extractedlatLong];
+    }, [] as LatLngTuple[]);
+  }, [responseData]);
 
   //Active toggle class function
   const toggleClass = (e: any) => {
@@ -127,11 +137,15 @@ function App() {
 
             <MapContainer
               attributionControl={false}
-              center={defaultLocation()}
-              zoom={2.5}
+              // center={defaultLocation()}
+              zoom={5.5}
               scrollWheelZoom={true}
               zoomControl={false}
+              minZoom={3}
+              bounds={extractBounds}
             >
+              {!asset && <MapBound bound={extractBounds} />}
+
               <TileLayer
                 attribution=' <a href="https://www.openstreetmap.org/copyright"></a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -144,6 +158,9 @@ function App() {
                     asset?.locations[0].latitude,
                     asset?.locations[0].longitude,
                   ]}
+                  bound={asset.locations.map((location) => {
+                    return [location.latitude, location.longitude];
+                  })}
                 />
               )}
 

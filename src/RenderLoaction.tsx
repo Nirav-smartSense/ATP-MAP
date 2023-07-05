@@ -17,6 +17,7 @@ const RenderLoaction = ({
   if (!locationData) {
     return null;
   }
+
   return (
     <>
       {locationData.map(({ companyName, locations }) => {

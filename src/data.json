@@ -2,50 +2,242 @@
     "data": [
       {
         "assetId":1,
-        "assetName":"speaker",
-        "companyName":"Boat",
+        "assetName":"Asset 1",
+        "companyName":"Asset 1",
         "companyLogo":"BT",
         "companyBPN":123456,
         "locations":[
-          {"latitude":23.28,"longitude":72.65,"createDate":"12-2-2022"},
-          {"latitude":20.28,"longitude":73.65,"createDate":"10-02-2002"},
-          {"latitude":19.28,"longitude":80.35,"createDate":"10-02-2002"}
+          {"latitude":52.28,"longitude":17.65,"createDate":"12-2-2022"},
+          {"latitude":52.28,"longitude":4.65,"createDate":"10-02-2002"},
+          {"latitude":53.28,"longitude":6.35,"createDate":"10-02-2002"}
         ]
       },
       {
         "assetId":2,
-        "assetName":"laptop",
-        "companyName":"Dell",
+        "assetName":"Asset 2",
+        "companyName":"Asset 2",
         "companyLogo":"DL",
         "companyBPN":1234567,
         "locations":[
-          {"latitude":30.28,"longitude":10.15,"createDate":"12-2-2022"},
-          {"latitude":11.68,"longitude":25.65,"createDate":"10-02-2002"},
-          {"latitude":13.28,"longitude":6.35,"createDate":"10-02-2002"}
+          {"latitude":32.38,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":50.68,"longitude":6.65,"createDate":"10-02-2002"},
+          {"latitude":51.28,"longitude":10.35,"createDate":"10-02-2002"}
         ]
       },
       {
         "assetId":3,
-        "assetName":"headphones",
-        "companyName":"JBL",
+        "assetName":"Asset 3",
+        "companyName":"Asset 3",
         "companyLogo":"JB",
         "companyBPN":1234567,
         "locations":[
-          {"latitude":-30.28,"longitude":120.15,"createDate":"12-2-2022"},
-          {"latitude":-12.68,"longitude":125.65,"createDate":"10-02-2002"},
-          {"latitude":-25.28,"longitude":138.35,"createDate":"10-02-2002"}
+          {"latitude":20.28,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":50.38,"longitude":8.65,"createDate":"10-02-2002"},
+          {"latitude":50.48,"longitude":9.35,"createDate":"10-02-2002"}
         ]
       },
       {
         "assetId":4,
-        "assetName":"car",
-        "companyName":"BMW",
+        "assetName":"Asset 4",
+        "companyName":"Asset 4",
         "companyLogo":"BM",
         "companyBPN":1234567,
         "locations":[
-          {"latitude":30.28,"longitude":-110.15,"createDate":"12-2-2022"},
-          {"latitude":45.68,"longitude":-115.65,"createDate":"10-02-2002"},
-          {"latitude":55.28,"longitude":-126.35,"createDate":"10-02-2002"}
+          {"latitude":49.28,"longitude":6.15,"createDate":"12-2-2022"},
+          {"latitude":50.38,"longitude":7.65,"createDate":"10-02-2002"},
+          {"latitude":49.48,"longitude":8.35,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":5,
+        "assetName":"Asset 5",
+        "companyName":"Asset 5",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.28,"longitude":8.15,"createDate":"12-2-2022"},
+          {"latitude":52.8,"longitude":9.65,"createDate":"10-02-2002"},
+          {"latitude":52.4,"longitude":7.35,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":6,
+        "assetName":"Asset 6",
+        "companyName":"Asset 6",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.8,"longitude":8.15,"createDate":"12-2-2022"},
+          {"latitude":52.18,"longitude":9.65,"createDate":"10-02-2002"},
+          {"latitude":52.44,"longitude":7.35,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":7,
+        "assetName":"Asset 7",
+        "companyName":"Asset 7",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.88,"longitude":8.15,"createDate":"12-2-2022"},
+          {"latitude":52.38,"longitude":9.65,"createDate":"10-02-2002"},
+          {"latitude":52.24,"longitude":7.35,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":8,
+        "assetName":"Asset 8",
+        "companyName":"Asset 8",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.9,"longitude":8.15,"createDate":"12-2-2022"},
+          {"latitude":52.19,"longitude":9.65,"createDate":"10-02-2002"},
+          {"latitude":52.29,"longitude":7.35,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":9,
+        "assetName":"Asset 9",
+        "companyName":"Asset 9",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":51.9,"longitude":8.15,"createDate":"12-2-2022"},
+          {"latitude":51.19,"longitude":9.65,"createDate":"10-02-2002"},
+          {"latitude":51.29,"longitude":8.35,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":10,
+        "assetName":"Asset 10",
+        "companyName":"Asset 10",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.1,"longitude":8.15,"createDate":"12-2-2022"},
+          {"latitude":52.2,"longitude":9.45,"createDate":"10-02-2002"},
+          {"latitude":52.3,"longitude":8.5,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":11,
+        "assetName":"Asset 11",
+        "companyName":"Asset 11",
+        "companyLogo":"BT",
+        "companyBPN":123456,
+        "locations":[
+          {"latitude":53.025,"longitude":10.15,"createDate":"12-2-2022"},
+          {"latitude":53.452,"longitude":9.45,"createDate":"10-02-2002"},
+          {"latitude":53.325,"longitude":7.5,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":12,
+        "assetName":"Asset 12",
+        "companyName":"Asset 12",
+        "companyLogo":"DL",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":53.35,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":53.12,"longitude":10.45,"createDate":"10-02-2002"},
+          {"latitude":53.25,"longitude":8.5,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":13,
+        "assetName":"Asset 13",
+        "companyName":"Asset 13",
+        "companyLogo":"JB",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.15,"longitude":6.15,"createDate":"12-2-2022"},
+          {"latitude":52.70,"longitude":6.45,"createDate":"10-02-2002"},
+          {"latitude":52.25,"longitude":6.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":14,
+        "assetName":"Asset 14",
+        "companyName":"Asset 14",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":53.1,"longitude":6.15,"createDate":"12-2-2022"},
+          {"latitude":53.2,"longitude":6.45,"createDate":"10-02-2002"},
+          {"latitude":53.35,"longitude":6.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":15,
+        "assetName":"Asset 15",
+        "companyName":"Asset 15",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.44,"longitude":6.15,"createDate":"12-2-2022"},
+          {"latitude":52.55,"longitude":6.45,"createDate":"10-02-2002"},
+          {"latitude":52.76,"longitude":6.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":16,
+        "assetName":"Asset 16",
+        "companyName":"Asset 16",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.44,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":52.55,"longitude":8.45,"createDate":"10-02-2002"},
+          {"latitude":52.76,"longitude":9.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":17,
+        "assetName":"Asset 17",
+        "companyName":"Asset 17",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.34,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":52.85,"longitude":8.45,"createDate":"10-02-2002"},
+          {"latitude":52.26,"longitude":9.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":18,
+        "assetName":"Asset 18",
+        "companyName":"Asset 18",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.14,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":52.25,"longitude":8.45,"createDate":"10-02-2002"},
+          {"latitude":52.36,"longitude":9.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":19,
+        "assetName":"Asset 19",
+        "companyName":"Asset 19",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":52.84,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":53.05,"longitude":8.45,"createDate":"10-02-2002"},
+          {"latitude":52.36,"longitude":9.0,"createDate":"10-02-2002"}
+        ]
+      },
+      {
+        "assetId":20,
+        "assetName":"Asset 20",
+        "companyName":"Asset 20",
+        "companyLogo":"BM",
+        "companyBPN":1234567,
+        "locations":[
+          {"latitude":53.4,"longitude":7.15,"createDate":"12-2-2022"},
+          {"latitude":53.5,"longitude":8.45,"createDate":"10-02-2002"},
+          {"latitude":52.6,"longitude":9.0,"createDate":"10-02-2002"}
         ]
       }
     ]
