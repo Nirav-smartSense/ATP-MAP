@@ -12,13 +12,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import data from "./data.json";
 import RenderLoaction from "./RenderLoaction";
 import PolylineWithMarker from "./PolylineWithMarker";
-import { LatLngTuple, map } from "leaflet";
+import { LatLngTuple, Popup, map } from "leaflet";
 import MapBound from "./MapBound";
 
 function SetViewOnClick({ location, bound }: any) {
   const map = useMap();
-  // map.flyTo(location, map.getZoom());
-  // map.fitBounds(bound, { paddingTopLeft: [340, 50], duration: 10000 });
   map.flyToBounds(bound, { paddingTopLeft: [340, 50] });
 
   return null;

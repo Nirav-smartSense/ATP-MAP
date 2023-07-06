@@ -47,8 +47,8 @@
 
 .left-container ul li a:hover,
 .left-container ul li a.active {
-  background-color: #333;
-  color: #e7e7e7;
+  background-color: #f28729;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -62,15 +62,33 @@
 
 .popUpMarker {
   display: flex;
-  align-items: center;
+  flex-flow: column;
   gap: 1rem;
 }
-.popUpMarker p {
-  font-size: 16px;
+
+.popUpMarker .imgSection {
+  height: 150px;
+  width: 250px;
+  background: #e7e7e7;
+}
+
+.popUpMarker .imgSection img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tooltipText {
+  text-align: left;
+}
+
+.tooltipText p {
+  font-size: 20px;
   line-height: 26px;
   font-weight: 600;
   margin: 0;
 }
+
 .leaflet-popup-content {
   margin: 0 10px !important;
   padding: 15px 0;
@@ -139,3 +157,38 @@
   opacity: 0;
   background: #fff;
 } */
+
+.assetData {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.assetData .imgSection {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #f28729;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assetData .imgSection img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.assetData p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.leaflet-tooltip-top {
+  border-radius: 15px !important;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4) !important;
+}

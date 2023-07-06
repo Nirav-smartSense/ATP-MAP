@@ -1,70 +1,70 @@
 import React from "react";
 
-type AbilityType = {
+interface NameUrl {
   name: string;
   url: string;
-};
+}
 
-type AbilitiesType = {
-  ability: AbilityType[];
+interface Abilities {
+  ability: NameUrl[];
   is_hidden: boolean;
   slot: number;
-};
+}
 
-type GameIncidecesType = {
+interface GameIncideces {
   game_index: number;
-  version: AbilityType[];
-};
+  version: NameUrl[];
+}
 
-type VersionDetailType = {
+interface VersionDetail {
   level_learned_at: number;
-  move_learn_method: AbilityType[];
-  version_group: AbilityType[];
-};
+  move_learn_method: NameUrl[];
+  version_group: NameUrl[];
+}
 
-type MovesType = {
-  move: AbilityType[];
-  version_group_details: VersionDetailType[];
-};
+interface Moves {
+  move: NameUrl[];
+  version_group_details: VersionDetail[];
+}
 
-type DreamWorldType = {
+interface DreamWorld {
   front_default: string;
   front_female: boolean;
-};
+}
 
-type SpriteOtherHomeType = {
+interface SpriteOtherHome {
   front_default: string;
   front_female: boolean;
   front_shiny: string;
   front_shiny_female: boolean;
-};
+}
 
-type OfficialArtWorkType = {
+interface OfficialArtWork {
   front_default: string;
   front_shiny: string;
-};
+}
 
-type SpriteOtherType = {
-  dream_world: DreamWorldType[];
-  home: SpriteOtherHomeType[];
-  official_artwork: OfficialArtWorkType[];
-};
+interface SpriteOther {
+  dream_world: DreamWorld[];
+  home: SpriteOtherHome[];
+  official_artwork: OfficialArtWork[];
+}
 
-type GenerationColorsType = {
+interface GenerationColors {
   back_default: string;
   back_gray: string;
   back_transparent: string;
   front_default: string;
   front_gray: string;
   front_transparent: string;
-};
+}
 
-type GenerationIType = {
-  red_blue: GenerationColorsType[];
-  yellow: GenerationColorsType[];
-};
+interface GenerationI {
+  red_blue: GenerationColors[];
+  yellow: GenerationColors[];
+}
 
-type ColorCrystalType = {
+interface ColorCrystal {
   back_default: string;
   back_shiny: string;
   back_shiny_transparent: string;
@@ -73,18 +73,18 @@ type ColorCrystalType = {
   front_shiny: string;
   front_shiny_transparent: string;
   front_transparent: string;
-};
+}
 
-type GenerationIIType = {
-  crystal: ColorCrystalType[];
-};
+interface GenerationII {
+  crystal: ColorCrystal[];
+}
 
-type SpritesVersionsType = {
-  generation_i: GenerationIType[];
-  generation_ii: GenerationIIType[];
-};
+interface SpritesVersions {
+  generation_i: GenerationI[];
+  generation_ii: GenerationII[];
+}
 
-type SpritesType = {
+interface Sprites {
   back_default: string;
   back_female: boolean;
   back_shiny: string;
@@ -93,26 +93,40 @@ type SpritesType = {
   front_female: boolean;
   front_shiny: string;
   front_shiny_female: boolean;
-  other: SpriteOtherType[];
-  versions: SpritesVersionsType[];
-};
+  other: SpriteOther[];
+  versions: SpritesVersions[];
+}
 
-interface PracticeInterface {
-  abilities: AbilitiesType[];
+interface Stats {
+  base_stat: number;
+  effort: number;
+  stat: NameUrl[];
+}
+
+interface Types {
+  slot: number;
+  type: NameUrl[];
+}
+
+interface Pokemon {
+  abilities: Abilities[];
   base_experience: number;
-  forms: AbilityType[];
-  game_indices: GameIncidecesType[];
+  forms: NameUrl[];
+  game_indices: GameIncideces[];
   height: number;
-  held_items: [];
+  held_items: unknown[];
   id: number;
   is_default: boolean;
   location_area_encounters: string;
-  moves: MovesType[];
+  moves: Moves[];
   name: string;
   order: number;
   past_types: [];
-  species: AbilityType[];
-  sprites: SpritesType[];
+  species: NameUrl[];
+  sprites: Sprites[];
+  stats: Stats[];
+  types: Types[];
+  weight: number;
 }
 
 const practice = () => {

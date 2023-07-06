@@ -1,7 +1,9 @@
 import { AssetTypes } from "./App";
-import { Marker, Polyline, Tooltip } from "react-leaflet";
+import { Marker, Polyline, Popup, Tooltip } from "react-leaflet";
 import { Icon } from "leaflet";
 import markerIcon from "../public/marker-icon.png";
+import assetImg from "../public/placeholder.png";
+import MarkerClusterGroup from "react-leaflet-cluster";
 
 const limeOptions = { color: "black" };
 
@@ -26,8 +28,9 @@ const PolylineWithMarker = ({
       <Marker
         position={[asset.locations[0].latitude, asset.locations[0].longitude]}
         icon={customIcon}
+        keyboard
       >
-        <Tooltip permanent direction="top">
+        <Tooltip direction="top">
           <div className="popUpMarker">
             <img src={markerIcon} height={20} alt="" />
             <p>{asset.companyName}</p>
@@ -46,16 +49,22 @@ const PolylineWithMarker = ({
         })}
         weight={2}
       />
+
       {asset.locations.map((locationData) => (
         <Marker
           position={[locationData.latitude, locationData.longitude]}
           icon={customIcon}
           key={locationData.createDate}
         >
-          <Tooltip permanent direction="top">
+          <Popup>Text</Popup>
+          <Tooltip sticky direction="top">
             <div className="popUpMarker">
-              <img src={markerIcon} height={20} alt="" />
-              <p>{asset.companyName}</p>
+              <div className="imgSection">
+                <img src={assetImg} alt="" />
+              </div>
+              <div className="tooltipText">
+                <p>{asset.companyName}</p>
+              </div>
             </div>
           </Tooltip>
         </Marker>
