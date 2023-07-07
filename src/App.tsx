@@ -141,6 +141,7 @@ function App() {
               zoomControl={false}
               minZoom={3}
               bounds={extractBounds}
+              layers={[]}
             >
               {!asset && <MapBound bound={extractBounds} />}
 
