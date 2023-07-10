@@ -64,6 +64,7 @@
   display: flex;
   flex-flow: column;
   gap: 1rem;
+  z-index: 9999999;
 }
 
 .popUpMarker .imgSection {
@@ -91,8 +92,8 @@
 
 .leaflet-popup-content {
   margin: 0 10px !important;
-  padding: 15px 0;
-  width: 140px !important;
+  padding: 5px 0;
+  /* width: 140px !important; */
 }
 
 .leaflet-popup-content p {
@@ -191,4 +192,35 @@
 .leaflet-tooltip-top {
   border-radius: 15px !important;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.popupSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.popupSection .logoSection {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+}
+
+.popupSection .logoSection img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.popupSection .popupText {
+  font-size: 1rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.leaflet-tooltip-pane {
+  z-index: 999 !important;
 }

@@ -1,8 +1,8 @@
-import { AssetTypes } from './App';
-import MarkerClusterGroup from 'react-leaflet-cluster';
-import { v4 as uuidv4 } from 'uuid';
+import { AssetTypes } from "./App";
+import MarkerClusterGroup from "react-leaflet-cluster";
+import { v4 as uuidv4 } from "uuid";
 
-import CustomMarker from './CustomMarker';
+import CustomMarker from "./CustomMarker";
 
 const RenderLoaction = ({
   locationData,
@@ -15,13 +15,14 @@ const RenderLoaction = ({
 
   return (
     <MarkerClusterGroup>
-      {locationData.map(({ companyName, locations }) => {
+      {locationData.map(({ companyName, locations, companyLogo }) => {
         return locations.map(({ latitude, longitude, createDate }) => (
           <CustomMarker
             position={[latitude, longitude]}
             createDate={createDate}
             companyName={companyName}
             key={uuidv4()}
+            logo={companyLogo}
           />
         ));
       })}

@@ -56,7 +56,6 @@ const PolylineWithMarker = ({
           icon={customIcon}
           key={locationData.createDate}
         >
-          <Popup>Text</Popup>
           <Tooltip sticky direction="top">
             <div className="popUpMarker">
               <div className="imgSection">

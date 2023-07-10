@@ -4,7 +4,7 @@
         "assetId":1,
         "assetName":"Asset 1",
         "companyName":"Asset 1",
-        "companyLogo":"BT",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":123456,
         "locations":[
           {"latitude":52.28,"longitude":17.65,"createDate":"12-2-2022"},
@@ -16,7 +16,7 @@
         "assetId":2,
         "assetName":"Asset 2",
         "companyName":"Asset 2",
-        "companyLogo":"DL",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":32.38,"longitude":7.15,"createDate":"12-2-2022"},
@@ -28,7 +28,7 @@
         "assetId":3,
         "assetName":"Asset 3",
         "companyName":"Asset 3",
-        "companyLogo":"JB",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":20.28,"longitude":7.15,"createDate":"12-2-2022"},
@@ -40,7 +40,7 @@
         "assetId":4,
         "assetName":"Asset 4",
         "companyName":"Asset 4",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":49.28,"longitude":6.15,"createDate":"12-2-2022"},
@@ -52,7 +52,7 @@
         "assetId":5,
         "assetName":"Asset 5",
         "companyName":"Asset 5",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.28,"longitude":8.15,"createDate":"12-2-2022"},
@@ -64,7 +64,7 @@
         "assetId":6,
         "assetName":"Asset 6",
         "companyName":"Asset 6",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.8,"longitude":8.15,"createDate":"12-2-2022"},
@@ -76,7 +76,7 @@
         "assetId":7,
         "assetName":"Asset 7",
         "companyName":"Asset 7",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.88,"longitude":8.15,"createDate":"12-2-2022"},
@@ -88,7 +88,7 @@
         "assetId":8,
         "assetName":"Asset 8",
         "companyName":"Asset 8",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.9,"longitude":8.15,"createDate":"12-2-2022"},
@@ -100,7 +100,7 @@
         "assetId":9,
         "assetName":"Asset 9",
         "companyName":"Asset 9",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":51.9,"longitude":8.15,"createDate":"12-2-2022"},
@@ -112,7 +112,7 @@
         "assetId":10,
         "assetName":"Asset 10",
         "companyName":"Asset 10",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.1,"longitude":8.15,"createDate":"12-2-2022"},
@@ -160,7 +160,7 @@
         "assetId":14,
         "assetName":"Asset 14",
         "companyName":"Asset 14",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":53.1,"longitude":6.15,"createDate":"12-2-2022"},
@@ -172,7 +172,7 @@
         "assetId":15,
         "assetName":"Asset 15",
         "companyName":"Asset 15",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.44,"longitude":6.15,"createDate":"12-2-2022"},
@@ -184,7 +184,7 @@
         "assetId":16,
         "assetName":"Asset 16",
         "companyName":"Asset 16",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.44,"longitude":7.15,"createDate":"12-2-2022"},
@@ -196,7 +196,7 @@
         "assetId":17,
         "assetName":"Asset 17",
         "companyName":"Asset 17",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.34,"longitude":7.15,"createDate":"12-2-2022"},
@@ -208,7 +208,7 @@
         "assetId":18,
         "assetName":"Asset 18",
         "companyName":"Asset 18",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.14,"longitude":7.15,"createDate":"12-2-2022"},
@@ -220,7 +220,7 @@
         "assetId":19,
         "assetName":"Asset 19",
         "companyName":"Asset 19",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":52.84,"longitude":7.15,"createDate":"12-2-2022"},
@@ -232,7 +232,7 @@
         "assetId":20,
         "assetName":"Asset 20",
         "companyName":"Asset 20",
-        "companyLogo":"BM",
+        "companyLogo":"https://img.freepik.com/premium-photo/picture-image-symbol-blue-background_172429-2022.jpg",
         "companyBPN":1234567,
         "locations":[
           {"latitude":53.4,"longitude":7.15,"createDate":"12-2-2022"},

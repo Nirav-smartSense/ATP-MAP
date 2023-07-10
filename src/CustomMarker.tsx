@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Marker, Popup, Tooltip, useMap, useMapEvent } from 'react-leaflet';
-import companyLogo from '../public/placeholder.png';
-import markerIcon from '../public/marker-icon.png';
+import React, { useEffect, useRef, useState } from "react";
+import { Marker, Popup, Tooltip, useMap, useMapEvent } from "react-leaflet";
+import companyLogo from "../public/placeholder.png";
+import markerIcon from "../public/marker-icon.png";
 
-import { Icon } from 'leaflet';
+import { Icon } from "leaflet";
 
 const customIcon = new Icon({
   iconUrl: markerIcon,
   iconSize: [20, 30],
 });
 
-const CustomMarker = ({ position, companyName }: any) => {
+const CustomMarker = ({ position, companyName, logo }: any) => {
   return (
     <Marker
       position={position}
@@ -29,7 +29,12 @@ const CustomMarker = ({ position, companyName }: any) => {
         autoClose={false}
         interactive
       >
-        {'Compnay logo -> name'}
+        <div className="popupSection">
+          <div className="logoSection">
+            <img src={logo} alt="" />
+          </div>
+          <div className="popupText">{companyName}</div>
+        </div>
       </Popup>
       <Tooltip direction="top">
         <div className="popUpMarker">
