@@ -1,21 +1,15 @@
-import "./App.css";
-import {
-  MapContainer,
-  TileLayer,
-  ZoomControl,
-  useMap,
-  FeatureGroup,
-} from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import './App.css';
+import { MapContainer, TileLayer, ZoomControl, useMap } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import data from "./data.json";
-import RenderLoaction from "./RenderLoaction";
-import PolylineWithMarker from "./PolylineWithMarker";
-import { LatLngTuple, Popup, map } from "leaflet";
-import MapBound from "./MapBound";
+import { useEffect, useMemo, useState } from 'react';
+import data from './data.json';
+import RenderLoaction from './RenderLoaction';
+import PolylineWithMarker from './PolylineWithMarker';
+import { LatLngTuple } from 'leaflet';
+import MapBound from './MapBound';
 
-function SetViewOnClick({ location, bound }: any) {
+function SetViewOnClick({ bound }: any) {
   const map = useMap();
   map.flyToBounds(bound, { paddingTopLeft: [340, 50] });
 
@@ -102,19 +96,15 @@ function App() {
             <ul>
               {responseData.map((ast) => {
                 return (
-                  <>
-                    <li key={ast.assetId}>
-                      <a
-                        id={`${ast.assetId}`}
-                        className={
-                          ast.assetId === asset?.assetId ? "active" : ""
-                        }
-                        onClick={(e) => toggleClass(e)}
-                      >
-                        {ast.assetName}
-                      </a>
-                    </li>
-                  </>
+                  <li key={ast.assetId}>
+                    <a
+                      id={`${ast.assetId}`}
+                      className={ast.assetId === asset?.assetId ? 'active' : ''}
+                      onClick={(e) => toggleClass(e)}
+                    >
+                      {ast.assetName}
+                    </a>
+                  </li>
                 );
               })}
             </ul>
@@ -141,7 +131,6 @@ function App() {
               zoomControl={false}
               minZoom={3}
               bounds={extractBounds}
-              layers={[]}
             >
               {!asset && <MapBound bound={extractBounds} />}
 

@@ -1,27 +1,14 @@
-import { AssetTypes } from "./App";
-import MarkerClusterGroup from "react-leaflet-cluster";
-import CustomMarker from "./CustomMarker";
-import { useEffect, useState } from "react";
-import { useMap } from "react-leaflet";
+import { AssetTypes } from './App';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import { v4 as uuidv4 } from 'uuid';
+
+import CustomMarker from './CustomMarker';
 
 const RenderLoaction = ({
   locationData,
 }: {
   locationData: AssetTypes[] | null | undefined;
 }) => {
-  const map = useMap();
-
-  useEffect(() => {
-    if (locationData) {
-      locationData.forEach((locations) => {
-        map.openPopup("<div>NNN</div>", [
-          locations.locations[0].latitude,
-          locations.locations[0].longitude,
-        ]);
-      });
-    }
-  }, [locationData]);
-
   if (!locationData) {
     return null;
   }
@@ -30,13 +17,12 @@ const RenderLoaction = ({
     <MarkerClusterGroup>
       {locationData.map(({ companyName, locations }) => {
         return locations.map(({ latitude, longitude, createDate }) => (
-          <>
-            <CustomMarker
-              position={[latitude, longitude]}
-              createDate={createDate}
-              companyName={companyName}
-            />
-          </>
+          <CustomMarker
+            position={[latitude, longitude]}
+            createDate={createDate}
+            companyName={companyName}
+            key={uuidv4()}
+          />
         ));
       })}
     </MarkerClusterGroup>
