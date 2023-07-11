@@ -19,21 +19,12 @@
   padding: 20px;
 }
 
-.left-container ul {
-  padding: 0;
-  margin: 0;
-  height: calc(100vh - 240px);
-  overflow-y: auto;
-  background: #fff;
-}
-
-.left-container ul li {
-  list-style-type: none;
+.left-container .listItem {
   margin-bottom: 10px;
   cursor: pointer;
 }
 
-.left-container ul li a {
+.left-container .listItem a {
   text-decoration: none;
   font-size: 18px;
   color: #333;
@@ -45,8 +36,8 @@
   text-transform: capitalize;
 }
 
-.left-container ul li a:hover,
-.left-container ul li a.active {
+.left-container .listItem a:hover,
+.left-container .listItem a.active {
   background-color: #f28729;
   color: #fff;
   cursor: pointer;

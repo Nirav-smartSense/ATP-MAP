@@ -1,5 +1,5 @@
-import { LatLngTuple } from "leaflet";
 import React from "react";
+import { LatLngTuple } from "leaflet";
 import { useMap } from "react-leaflet";
 
 type MapBoundProps = {

@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { Marker, Popup, Tooltip, useMap, useMapEvent } from "react-leaflet";
 import companyLogo from "../public/placeholder.png";
 import markerIcon from "../public/marker-icon.png";
+import transparentLogo from "../public/transparent_img.png";
 
 import { Icon } from "leaflet";
 
 const customIcon = new Icon({
-  iconUrl: markerIcon,
-  iconSize: [20, 30],
+  iconUrl: transparentLogo,
+  iconSize: [40, 40],
 });
 
 const CustomMarker = ({ position, companyName, logo }: any) => {
