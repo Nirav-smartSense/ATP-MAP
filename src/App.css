@@ -26,7 +26,7 @@
 
 .left-container .listItem a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
   padding: 10px;
   background-color: #e7e7e7;
@@ -75,8 +75,8 @@
 }
 
 .tooltipText p {
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 14px;
+  line-height: 24px;
   font-weight: 600;
   margin: 0;
 }
@@ -206,12 +206,12 @@
 }
 
 .popupSection .popupText {
-  font-size: 1rem;
-  line-height: 2.4rem;
+  font-size: 13px;
+  line-height: 20px;
   font-weight: 600;
   margin: 0;
 }
 
-.leaflet-tooltip-pane {
+/* .leaflet-tooltip-pane {
   z-index: 999 !important;
-}
+} */

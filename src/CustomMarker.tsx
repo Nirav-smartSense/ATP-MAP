@@ -8,7 +8,7 @@ import { Icon } from "leaflet";
 
 const customIcon = new Icon({
   iconUrl: transparentLogo,
-  iconSize: [40, 40],
+  iconSize: [30, 30],
 });
 
 const CustomMarker = ({ position, companyName, logo }: any) => {
@@ -18,8 +18,15 @@ const CustomMarker = ({ position, companyName, logo }: any) => {
       icon={customIcon}
       interactive
       eventHandlers={{
-        add: (event) => {
-          event.target.openPopup();
+        mouseover: (event) => {
+          if (event.target.openPopup) {
+            event.target.openPopup();
+          }
+        },
+        mouseout: (event) => {
+          if (event.target.closePopup) {
+            event.target.closePopup();
+          }
         },
       }}
     >
@@ -30,21 +37,21 @@ const CustomMarker = ({ position, companyName, logo }: any) => {
         autoClose={false}
         interactive
       >
+        <div className="popUpMarker">
+          <div className="imgSection">
+            <img src={logo} alt="" />
+          </div>
+          <div className="tooltipText">
+            <p>{companyName}</p>
+          </div>
+        </div>
+      </Popup>
+      <Tooltip permanent direction="top">
         <div className="popupSection">
           <div className="logoSection">
             <img src={logo} alt="" />
           </div>
           <div className="popupText">{companyName}</div>
-        </div>
-      </Popup>
-      <Tooltip direction="top">
-        <div className="popUpMarker">
-          <div className="imgSection">
-            <img src={companyLogo} alt="" />
-          </div>
-          <div className="tooltipText">
-            <p>{companyName}</p>
-          </div>
         </div>
       </Tooltip>
     </Marker>

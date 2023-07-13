@@ -2,7 +2,7 @@ import "./App.css";
 import { MapContainer, TileLayer, ZoomControl, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import RenderLoaction from "./RenderLoaction";
 import PolylineWithMarker from "./PolylineWithMarker";
 import { LatLngTuple } from "leaflet";
@@ -12,7 +12,7 @@ import { faker } from "@faker-js/faker";
 
 function SetViewOnClick({ bound }: any) {
   const map = useMap();
-  map.flyToBounds(bound, { paddingTopLeft: [340, 50] });
+  map.flyToBounds(bound, { paddingTopLeft: [350, 50] });
 
   return null;
 }
@@ -40,27 +40,27 @@ const handleListing = () => {
     companyLogo: faker.image.avatar(),
     locations: [
       {
-        latitude: faker.location.latitude(),
-        longitude: faker.location.longitude(),
+        latitude: faker.location.latitude({ max: 10, min: 5 }),
+        longitude: faker.location.longitude({ max: 10, min: 5 }),
         createDate: faker.git.commitDate(),
       },
       {
-        latitude: faker.location.latitude(),
-        longitude: faker.location.longitude(),
+        latitude: faker.location.latitude({ max: 10, min: 5 }),
+        longitude: faker.location.longitude({ max: 10, min: 5 }),
         createDate: faker.git.commitDate(),
       },
       {
-        latitude: faker.location.latitude(),
-        longitude: faker.location.longitude(),
+        latitude: faker.location.latitude({ max: 10, min: 5 }),
+        longitude: faker.location.longitude({ max: 10, min: 5 }),
         createDate: faker.git.commitDate(),
       },
     ],
   };
 };
 
-const handleCount = (count: number, handleListing: any) => {
+const handleCount = (count: number, handleListing: any, pageNumber: number) => {
   let dataArray = [];
-
+  console.log("pageNUmber", pageNumber);
   for (let i = 0; i < count; i++) {
     dataArray.push({ ...handleListing() });
   }
@@ -74,16 +74,19 @@ function App() {
   const [asset, setAsset] = useState<null | AssetTypes>();
 
   const [data, setData] = useState<AssetTypes[]>([]);
-
-  //All data
-  // const responseData = data1.data;
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
-    let datasArr = handleCount(10, handleListing);
-    setData(datasArr);
-  }, []);
+    let datasArr = handleCount(50, handleListing, page);
+    setTimeout(() => {
+      setData([...data, ...datasArr]);
+    }, 400);
+  }, [page]);
 
-  console.log("data", data);
+  //Page counting function
+  const loadMoreListing = () => {
+    setPage(page + 1);
+  };
 
   const extractBounds = useMemo<LatLngTuple[]>(() => {
     const bounds = data.reduce((prev, nxt) => {
@@ -94,14 +97,13 @@ function App() {
 
       return [...prev, ...extractedlatLong];
     }, [] as LatLngTuple[]);
-
     return bounds;
   }, [data]);
 
   //Active toggle class function
   const toggleClass = (e: any) => {
     //store deviceName
-    const deviceResponse = parseInt(e.target.id);
+    const deviceResponse = e.target.id;
 
     if (deviceResponse === asset?.assetId) {
       setAsset(null);
@@ -142,6 +144,7 @@ function App() {
               asset={asset}
               responseData={data}
               toggleClass={toggleClass}
+              loadMore={loadMoreListing}
             />
           </div>
 
@@ -170,7 +173,7 @@ function App() {
                 attribution=' <a href="https://www.openstreetmap.org/copyright"></a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <ZoomControl position="topright" />
+              <ZoomControl position="bottomright" />
 
               {asset && (
                 <SetViewOnClick

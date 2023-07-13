@@ -1,16 +1,9 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { AssetTypes } from "./App";
 
-const AssetListing = ({ responseData, asset, toggleClass }: any) => {
-  const loadMore = useCallback(() => {
-    return setTimeout(() => {}, 200);
-  }, []);
-
-  useEffect(() => {
-    const timeout = loadMore();
-    return () => clearTimeout(timeout);
-  }, []);
+const AssetListing = ({ responseData, asset, toggleClass, loadMore }: any) => {
+  console.log("assetData", responseData);
 
   const handleListItems = (index: number) => {
     const ast = responseData[index];
@@ -36,7 +29,22 @@ const AssetListing = ({ responseData, asset, toggleClass }: any) => {
         data={responseData}
         itemContent={handleListItems}
         endReached={loadMore}
+        components={{ Footer }}
       />
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div
+      style={{
+        padding: "2rem",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      Loading...
     </div>
   );
 };

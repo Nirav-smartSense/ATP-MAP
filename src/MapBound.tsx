@@ -8,7 +8,10 @@ type MapBoundProps = {
 
 const MapBound = ({ bound }: MapBoundProps) => {
   const map = useMap();
-  map.fitBounds(bound);
+
+  if (bound.length > 1) {
+    map.fitBounds(bound);
+  }
   return null;
 };
 
